@@ -2,5 +2,10 @@
   "name": "die-with-us",
   "version": "1.0.0",
   "private": true,
-  "workspaces": ["apps/*"]
+  "workspaces": [
+    "apps/*"
+  ],
+  "devDependencies": {
+    "typescript": "^4.9.4"
+  }
 }
