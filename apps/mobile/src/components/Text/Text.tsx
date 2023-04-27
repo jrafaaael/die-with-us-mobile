@@ -1,11 +1,19 @@
 import { Text as RNText, TextProps } from "react-native";
+
+import { FONT_SIZE } from "../../utils/styles";
+
 import { styles } from "./styles";
 
-interface Props extends TextProps {}
+interface BaseProps extends TextProps {
+  size?: keyof typeof FONT_SIZE;
+}
 
-export function Text({ children, ...props }: Props) {
+export function Text({ children, size = "base", ...props }: BaseProps) {
   return (
-    <RNText {...props} style={[styles.base, props.style]}>
+    <RNText
+      {...props}
+      style={[styles.base, { fontSize: FONT_SIZE[size] }, props.style]}
+    >
       {children}
     </RNText>
   );
