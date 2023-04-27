@@ -2,6 +2,9 @@
   "name": "die-with-us",
   "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "mobile:dev": "yarn workspace die-with-us-mobile run start"
+  },
   "workspaces": [
     "apps/*"
   ],
