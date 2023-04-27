@@ -3,6 +3,9 @@ export const COLORS = {
     50: "#fafaf9",
     950: "#0c0a09",
   },
+  blue: {
+    600: "#2563eb"
+  },
 };
 
 export const FONT_SIZE = {
