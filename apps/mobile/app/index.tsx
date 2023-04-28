@@ -4,9 +4,7 @@ import { MessageList } from "../src/screens/Chat/components/MessageList/MessageL
 import { MessageComposer } from "../src/screens/Chat/components/MessageComposer/MessageComposer";
 
 export default function Chat() {
-  const [messages, setMessages] = useState([
-    { message: "idk", id: String(new Date().getTime()) },
-  ]);
+  const [messages, setMessages] = useState([]);
 
   return (
     <>
