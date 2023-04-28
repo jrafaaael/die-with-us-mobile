@@ -12,6 +12,12 @@ interface Props {
 
 export function MessageComposer({ onSubmit }: Props) {
   const messageRef = useRef("");
+  const inputRef = useRef<TextInput>(null);
+
+  const handleSubmit = () => {
+    onSubmit(messageRef.current);
+    inputRef.current.clear();
+  };
 
   return (
     <View style={styles.wrapper}>
@@ -20,10 +26,11 @@ export function MessageComposer({ onSubmit }: Props) {
           multiline
           placeholder="Your message was here"
           placeholderTextColor={COLORS.neutral[500]}
+          ref={inputRef}
           style={styles.input}
           onChangeText={(text) => (messageRef.current = text)}
         />
-        <Pressable style={styles.button} onPress={() => onSubmit(messageRef.current)}>
+        <Pressable style={styles.button} onPress={handleSubmit}>
           <Send width={20} height={20} stroke={COLORS.neutral[500]} />
         </Pressable>
       </View>
