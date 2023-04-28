@@ -20,6 +20,7 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   button: {
-    padding: SPACING.sm,
-  }
+    padding: SPACING.xs,
+    paddingRight: SPACING.sm,
+  },
 });
