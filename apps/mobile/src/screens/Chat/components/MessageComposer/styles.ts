@@ -6,17 +6,19 @@ export const styles = StyleSheet.create({
     paddingVertical: SPACING.base,
   },
   composer: {
-    paddingHorizontal: SPACING.sm,
+    paddingLeft: SPACING.sm,
     paddingVertical: SPACING.xs,
     backgroundColor: COLORS.neutral[900],
-    borderRadius: 10,
+    borderRadius: 15,
     flexDirection: "row",
     alignItems: "center",
-    gap: SPACING.base,
   },
   input: {
     maxHeight: 100,
     color: COLORS.neutral[50],
     flex: 1,
   },
+  button: {
+    padding: SPACING.sm,
+  }
 });
