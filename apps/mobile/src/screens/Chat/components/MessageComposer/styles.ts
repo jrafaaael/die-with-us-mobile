@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { COLORS, SPACING } from "../../../../utils/styles";
+import { COLORS, FONT_SIZE, SPACING } from "../../../../utils/styles";
 
 export const styles = StyleSheet.create({
   wrapper: {
@@ -16,6 +16,7 @@ export const styles = StyleSheet.create({
   input: {
     maxHeight: 100,
     color: COLORS.neutral[50],
+    fontSize: FONT_SIZE.sm,
     flex: 1,
   },
   button: {
