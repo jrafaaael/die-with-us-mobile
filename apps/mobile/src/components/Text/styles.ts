@@ -3,7 +3,7 @@ import { COLORS } from "../../utils/styles";
 
 export const styles = StyleSheet.create({
   base: {
-    color: COLORS.stone[50],
+    color: COLORS.neutral[50],
   },
   title: {
     fontWeight: "bold"

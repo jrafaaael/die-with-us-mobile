@@ -1,7 +1,8 @@
 export const COLORS = {
-  stone: {
-    50: "#fafaf9",
-    950: "#0c0a09",
+  neutral: {
+    50: "#fafafa",
+    500: "#737373",
+    950: "#0a0a0a",
   },
   blue: {
     600: "#2563eb"

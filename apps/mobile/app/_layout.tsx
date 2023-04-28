@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: SPACING.base,
     paddingTop: SPACING.base,
-    backgroundColor: COLORS.stone[950],
+    backgroundColor: COLORS.neutral[950],
     flex: 1,
   },
 });
