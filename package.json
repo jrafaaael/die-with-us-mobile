@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "mobile:dev": "yarn workspace die-with-us-mobile run start"
+    "mobile:dev": "yarn workspace die-with-us-mobile run start",
+    "api:dev": "yarn workspace die-with-us-api run start:dev"
   },
   "workspaces": [
     "apps/*"
