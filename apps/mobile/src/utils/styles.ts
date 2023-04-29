@@ -6,7 +6,7 @@ export const COLORS = {
     950: "#0a0a0a",
   },
   blue: {
-    600: "#2563eb"
+    600: "#2563eb",
   },
 };
 

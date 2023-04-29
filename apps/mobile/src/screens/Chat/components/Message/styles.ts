@@ -9,6 +9,6 @@ export const styles = StyleSheet.create({
     paddingHorizontal: SPACING.sm,
     backgroundColor: COLORS.blue[600],
     borderRadius: 15,
-    alignSelf: "flex-start"
+    alignSelf: "flex-start",
   },
 });

@@ -5,10 +5,10 @@ import { Message } from "../Message/Message";
 import { styles } from "./styles";
 
 interface Props {
-  messages: {message: string, id: string}[]
+  messages: { message: string; id: string }[];
 }
 
-export function MessageList({messages}: Props) {
+export function MessageList({ messages }: Props) {
   return (
     <FlatList
       removeClippedSubviews
