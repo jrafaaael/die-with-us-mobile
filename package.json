@@ -5,7 +5,8 @@
   "scripts": {
     "mobile:dev": "yarn workspace die-with-us-mobile run start",
     "api:dev": "yarn workspace die-with-us-api run start:dev",
-    "format": "prettier '**/*' --write --ignore-unknown"
+    "format": "prettier '**/*' --write --ignore-unknown",
+    "lint": "eslint --fix '**/{src,app,apps,libs,test}/*.{js,jsx,ts,tsx}'"
   },
   "workspaces": [
     "apps/*"
