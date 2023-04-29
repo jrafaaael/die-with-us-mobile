@@ -17,6 +17,7 @@ export const styles = StyleSheet.create({
     maxHeight: 100,
     color: COLORS.neutral[50],
     fontSize: FONT_SIZE.sm,
+    fontFamily: "Inter-Regular",
     flex: 1,
   },
   button: {
