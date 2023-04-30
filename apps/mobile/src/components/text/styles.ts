@@ -7,6 +7,6 @@ export const styles = StyleSheet.create({
     fontFamily: "Inter-Regular",
   },
   title: {
-    fontWeight: "bold",
+    fontFamily: "Inter-Bold",
   },
 });
