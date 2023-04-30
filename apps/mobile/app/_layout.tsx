@@ -6,9 +6,9 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-SplashScreen.preventAutoHideAsync();
-
 import { COLORS, SPACING } from "../src/utils/styles";
+
+SplashScreen.preventAutoHideAsync();
 
 export default function MainLayout() {
   const [fontsLoaded] = useFonts({
