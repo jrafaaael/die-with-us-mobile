@@ -1,6 +1,6 @@
 import { FlatList } from "react-native";
 
-import { Message } from "../Message/Message";
+import { Message } from "../message";
 
 import { styles } from "./styles";
 

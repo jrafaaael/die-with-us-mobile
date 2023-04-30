@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Pressable, TextInput, View } from "react-native";
 
-import { Send } from "../../../../components/icons/outlined/Send";
+import { Send } from "../../../../components/icons/outlined/send";
 import { COLORS } from "../../../../utils/styles";
 
 import { styles } from "./styles";
