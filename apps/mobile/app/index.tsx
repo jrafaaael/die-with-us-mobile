@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { MessageList } from "../src/screens/chat/components/message-list";
 import { MessageComposer } from "../src/screens/chat/components/message-composer";
-import socket from "../src/screens/chat/utils/socket-io";
+import socket from "../src/screens/chat/libs/socket-io";
 
 export default function Chat() {
   const [messages, setMessages] = useState([]);
