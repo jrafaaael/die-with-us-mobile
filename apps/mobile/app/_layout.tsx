@@ -26,12 +26,10 @@ export default function MainLayout() {
   }
 
   return (
-    <>
+    <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
       <StatusBar style="light" />
-      <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
-        <Slot />
-      </SafeAreaView>
-    </>
+      <Slot />
+    </SafeAreaView>
   );
 }
 
