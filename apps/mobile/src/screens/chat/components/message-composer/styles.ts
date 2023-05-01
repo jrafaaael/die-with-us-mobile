@@ -3,7 +3,7 @@ import { COLORS, FONT_SIZE, SPACING } from "../../../../utils/styles";
 
 export const styles = StyleSheet.create({
   wrapper: {
-    paddingVertical: SPACING.base,
+    paddingTop: SPACING.base,
   },
   composer: {
     paddingLeft: SPACING.sm,

@@ -36,8 +36,7 @@ export default function MainLayout() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: SPACING.base,
-    paddingTop: SPACING.base,
+    padding: SPACING.base,
     backgroundColor: COLORS.neutral[950],
     flex: 1,
   },
