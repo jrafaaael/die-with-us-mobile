@@ -20,7 +20,7 @@ export class UsersController {
     const { username } = createUserDto;
 
     if (!this.usersService.isUsernameAvailable(username)) {
-      throw new HttpException("NOT_ACCEPTABLE", HttpStatus.NOT_ACCEPTABLE);
+      throw new HttpException("BAD_REQUEST", HttpStatus.BAD_REQUEST);
     }
 
     this.usersService.create(username);
