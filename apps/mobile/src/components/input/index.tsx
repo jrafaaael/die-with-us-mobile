@@ -1,15 +1,27 @@
-import { TextInput, TextInputProps } from "react-native";
+import { TextInput, TextInputProps, View } from "react-native";
+
 import { COLORS } from "../../utils/styles";
 
 import { styles } from "./styles";
 
-export function Input({ ...props }: TextInputProps) {
+interface InputProps extends TextInputProps {
+  leftElement?: JSX.Element;
+}
+
+export function Input({ leftElement, ...props }: InputProps) {
   return (
-    <TextInput
-      placeholderTextColor={COLORS.neutral[500]}
-      cursorColor={COLORS.neutral[500]}
-      {...props}
-      style={[styles.input, props.style]}
-    />
+    <View style={styles.wrapper}>
+      <View style={styles.leftWrapper}>{leftElement ? leftElement : null}</View>
+      <TextInput
+        placeholderTextColor={COLORS.neutral[500]}
+        cursorColor={COLORS.neutral[500]}
+        {...props}
+        style={[
+          styles.input,
+          props.style,
+          leftElement ? styles.hasLeftElement : {},
+        ]}
+      />
+    </View>
   );
 }
