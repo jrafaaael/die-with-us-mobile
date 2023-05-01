@@ -6,6 +6,7 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { AuthProvider } from "../src/providers/auth-provider";
 import { COLORS, SPACING } from "../src/utils/styles";
 
 SplashScreen.preventAutoHideAsync();
@@ -27,10 +28,12 @@ export default function MainLayout() {
   }
 
   return (
-    <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
-      <StatusBar style="light" />
-      <Slot />
-    </SafeAreaView>
+    <AuthProvider>
+      <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
+        <StatusBar style="light" />
+        <Slot />
+      </SafeAreaView>
+    </AuthProvider>
   );
 }
 
