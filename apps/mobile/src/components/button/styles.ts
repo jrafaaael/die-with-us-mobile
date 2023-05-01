@@ -5,6 +5,9 @@ export const styles = StyleSheet.create({
   button: {
     padding: SPACING.sm,
     backgroundColor: COLORS.blue[600],
+    borderWidth: 1.1,
+    borderColor: COLORS.blue[500],
+    borderBottomWidth: 0,
     borderRadius: 8,
   },
   text: {
