@@ -8,18 +8,13 @@ interface ButtonProps extends PressableProps {
   pressedStyle?: StyleProp<ViewStyle>;
 }
 
-export function Button({
-  children,
-  style,
-  pressedStyle,
-  ...props
-}: ButtonProps) {
+export function Button({ children, pressedStyle, ...props }: ButtonProps) {
   return (
     <Pressable
       {...props}
       style={({ pressed }) => [
         styles.button,
-        style as StyleProp<ViewStyle>,
+        props.style as StyleProp<ViewStyle>,
         pressed && pressedStyle ? pressedStyle : {},
       ]}
     >
