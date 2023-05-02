@@ -10,8 +10,16 @@ export const styles = StyleSheet.create({
     borderBottomWidth: 0,
     borderRadius: 8,
   },
+  buttonDisabled: {
+    borderColor: COLORS.neutral[500],
+    backgroundColor: COLORS.neutral[600],
+    opacity: 0.75,
+  },
   text: {
     color: COLORS.blue[50],
     textAlign: "center",
+  },
+  textDisabled: {
+    color: COLORS.neutral[500],
   },
 });

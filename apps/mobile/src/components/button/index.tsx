@@ -14,12 +14,13 @@ export function Button({ children, pressedStyle, ...props }: ButtonProps) {
       {...props}
       style={({ pressed }) => [
         styles.button,
+        props.disabled && styles.buttonDisabled,
         props.style as StyleProp<ViewStyle>,
         pressed && pressedStyle ? pressedStyle : {},
       ]}
     >
       {typeof children === "string" ? (
-        <Text isTitle style={styles.text}>
+        <Text isTitle style={[styles.text, styles.textDisabled]}>
           {children}
         </Text>
       ) : (
