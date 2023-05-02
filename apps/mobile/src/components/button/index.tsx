@@ -20,7 +20,10 @@ export function Button({ children, pressedStyle, ...props }: ButtonProps) {
       ]}
     >
       {typeof children === "string" ? (
-        <Text isTitle style={[styles.text, styles.textDisabled]}>
+        <Text
+          isTitle
+          style={[styles.text, props.disabled ? styles.textDisabled : {}]}
+        >
           {children}
         </Text>
       ) : (
