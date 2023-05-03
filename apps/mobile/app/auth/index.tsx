@@ -10,15 +10,24 @@ import { useCheckUsernameAvailability } from "../../src/screens/auth/hooks/use-c
 
 import { COLORS, SPACING } from "../../src/utils/styles";
 
+const ALPHANUMERIC_AND_UNDERSCORE = /^[a-zA-z0-9_]+$/;
+
 export default function Auth() {
   const [username, setUsername] = useState("");
   const debouncedUsername = useDebounce(username, 250);
+
+  const usernameIsValid =
+    debouncedUsername.length > 0 &&
+    debouncedUsername.length <= 12 &&
+    ALPHANUMERIC_AND_UNDERSCORE.test(debouncedUsername) &&
+    username === debouncedUsername;
+
   const { data } = useCheckUsernameAvailability({
     username: debouncedUsername,
-    enabled: debouncedUsername.length > 0,
+    enabled: usernameIsValid,
   });
 
-  const usernameIsAvailable = data?.available;
+  const usernameIsAvailable = data?.available && usernameIsValid;
 
   return (
     <>
