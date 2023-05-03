@@ -13,7 +13,10 @@ import { COLORS, SPACING } from "../../src/utils/styles";
 export default function Auth() {
   const [username, setUsername] = useState("");
   const debouncedUsername = useDebounce(username, 750);
-  const { data } = useCheckUsernameAvailability(debouncedUsername);
+  const { data } = useCheckUsernameAvailability({
+    username: debouncedUsername,
+    enabled: debouncedUsername.length > 0,
+  });
 
   const usernameIsAvailable = data?.available;
 
