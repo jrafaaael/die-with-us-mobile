@@ -31,7 +31,7 @@ export default function Auth() {
 
   return (
     <>
-      <Text size="xl" isTitle style={{ marginBottom: SPACING.base }}>
+      <Text size="xl" isTitle style={styles.title}>
         Choose your username. This is your unique identifier!
       </Text>
       <Input
@@ -47,6 +47,9 @@ export default function Auth() {
 }
 
 const styles = StyleSheet.create({
+  title: {
+    marginBottom: SPACING.base,
+  },
   button: {
     marginTop: "auto",
   },
