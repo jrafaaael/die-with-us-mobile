@@ -14,7 +14,7 @@ const ALPHANUMERIC_AND_UNDERSCORE = /^[a-zA-z0-9_]+$/;
 
 export default function Auth() {
   const [username, setUsername] = useState("");
-  const debouncedUsername = useDebounce(username, 250);
+  const debouncedUsername = useDebounce(username, 500);
 
   const usernameIsValid =
     debouncedUsername.length > 0 &&
