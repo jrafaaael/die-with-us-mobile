@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { StyleSheet } from "react-native";
+import { useMMKVString } from "react-native-mmkv";
 
 import { useDebounce } from "../../src/hooks/use-debounce";
 import { Text } from "../../src/components/text";
@@ -7,6 +8,7 @@ import { Input } from "../../src/components/input";
 import { Button } from "../../src/components/button";
 import { User } from "../../src/components/icons/filled/user";
 import { useCheckUsernameAvailability } from "../../src/screens/auth/hooks/use-check-username-availability";
+import { useRegisterUser } from "../../src/screens/auth/hooks/use-register-user";
 
 import { COLORS, SPACING } from "../../src/utils/styles";
 
@@ -15,6 +17,7 @@ const ALPHANUMERIC_AND_UNDERSCORE = /^[a-zA-z0-9_]+$/;
 export default function Auth() {
   const [username, setUsername] = useState("");
   const debouncedUsername = useDebounce(username, 500);
+  const [_, setStoredUsername] = useMMKVString("username");
 
   const usernameIsValid =
     debouncedUsername.length > 0 &&
@@ -26,8 +29,20 @@ export default function Auth() {
     username: debouncedUsername,
     enabled: usernameIsValid,
   });
+  const { isLoading, mutate } = useRegisterUser();
 
   const usernameIsAvailable = data?.available && usernameIsValid;
+
+  const handleRegister = () => {
+    mutate(
+      { username: debouncedUsername },
+      {
+        onSuccess: () => {
+          setStoredUsername(debouncedUsername);
+        },
+      },
+    );
+  };
 
   return (
     <>
@@ -39,7 +54,11 @@ export default function Auth() {
         leftElement={<User fill={COLORS.neutral[500]} />}
         onChangeText={(text) => setUsername(text)}
       />
-      <Button disabled={!usernameIsAvailable} style={styles.button}>
+      <Button
+        disabled={!usernameIsAvailable || isLoading}
+        style={styles.button}
+        onPress={handleRegister}
+      >
         Let's chat!
       </Button>
     </>
