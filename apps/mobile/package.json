@@ -6,7 +6,8 @@
     "start": "expo start --dev-client",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "build:dev:android": "eas build --profile development --platform android"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.29.5",
