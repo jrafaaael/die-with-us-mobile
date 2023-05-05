@@ -1,5 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
-import { checkUsernameAvailability } from "../api/check-username-availability";
+import { rq } from "../../../libs/axios";
+
+async function checkUsernameAvailability(username: string): Promise<{
+  available: boolean;
+}> {
+  const res = await rq.get(`users/username-available`, {
+    params: { username },
+  });
+
+  return res.data;
+}
 
 export function useCheckUsernameAvailability({
   username,

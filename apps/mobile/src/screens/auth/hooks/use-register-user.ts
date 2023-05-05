@@ -1,12 +1,18 @@
-import { useMutation, UseMutationOptions } from "@tanstack/react-query";
-import { registerUser } from "../api/register-user";
+import { useMutation } from "@tanstack/react-query";
+import { rq } from "../../../libs/axios";
 
-interface Options extends UseMutationOptions {
+async function registerUser(username: string) {
+  const res = await rq.post("users", { username });
+
+  return res.data;
+}
+
+interface RegisterUser {
   username: string;
 }
 
-export function useRegisterUser({ username }: Options) {
+export function useRegisterUser() {
   return useMutation({
-    mutationFn: () => registerUser(username),
+    mutationFn: ({ username }: RegisterUser) => registerUser(username),
   });
 }
