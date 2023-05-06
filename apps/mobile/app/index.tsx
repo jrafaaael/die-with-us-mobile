@@ -9,10 +9,7 @@ export default function Chat() {
 
   useEffect(() => {
     function handleNewMessage(data: { message: string }) {
-      setMessages((oldMessages) => [
-        ...oldMessages,
-        { ...data, id: String(new Date().getTime()) },
-      ]);
+      setMessages((oldMessages) => [...oldMessages, { ...data }]);
     }
 
     socket.on("message.receive", handleNewMessage);

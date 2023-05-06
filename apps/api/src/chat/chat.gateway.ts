@@ -15,6 +15,9 @@ export class ChatGateway {
 
   @SubscribeMessage("message.send")
   handleMessage(@MessageBody() data: string) {
-    this.server.emit("message.receive", data);
+    this.server.emit("message.receive", {
+      ...data,
+      id: String(new Date().getTime()),
+    });
   }
 }
