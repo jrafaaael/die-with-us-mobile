@@ -3,12 +3,28 @@ import { COLORS, SPACING } from "../../../../utils/styles";
 
 export const styles = StyleSheet.create({
   message: {
+    gap: 4,
+  },
+  sent: {
+    alignItems: "flex-end",
+  },
+  received: {
+    alignItems: "flex-start",
+  },
+  from: {
+    color: COLORS.neutral[400],
+  },
+  bubble: {
     maxWidth: "90%",
     marginBottom: SPACING.xs,
     paddingVertical: 8,
     paddingHorizontal: SPACING.sm,
-    backgroundColor: COLORS.blue[600],
     borderRadius: 15,
-    alignSelf: "flex-start",
+  },
+  bubbleSent: {
+    backgroundColor: COLORS.neutral[800],
+  },
+  bubbleReceived: {
+    backgroundColor: COLORS.blue[600],
   },
 });

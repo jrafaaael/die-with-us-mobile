@@ -1,11 +1,12 @@
 import { FlatList, View } from "react-native";
 
 import { Message } from "../message";
+import { Message as IMessage } from "../../types/message";
 
 import { styles } from "./styles";
 
 interface Props {
-  messages: { message: string; id: string }[];
+  messages: IMessage[];
 }
 
 export function MessageList({ messages }: Props) {
@@ -14,7 +15,9 @@ export function MessageList({ messages }: Props) {
       removeClippedSubviews
       data={messages}
       keyExtractor={(item) => item.id}
-      renderItem={({ item: { message } }) => <Message>{message}</Message>}
+      renderItem={({ item: { message, username } }) => (
+        <Message from={username}>{message}</Message>
+      )}
       style={styles.list}
       ItemSeparatorComponent={() => <View style={styles.separator} />}
     />
