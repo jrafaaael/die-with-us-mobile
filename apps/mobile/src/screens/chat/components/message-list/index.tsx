@@ -1,4 +1,4 @@
-import { FlatList } from "react-native";
+import { FlatList, View } from "react-native";
 
 import { Message } from "../message";
 
@@ -16,6 +16,7 @@ export function MessageList({ messages }: Props) {
       keyExtractor={(item) => item.id}
       renderItem={({ item: { message } }) => <Message>{message}</Message>}
       style={styles.list}
+      ItemSeparatorComponent={() => <View style={styles.separator} />}
     />
   );
 }
