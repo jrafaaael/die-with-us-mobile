@@ -16,7 +16,7 @@ export function Message({ children, from }: Props) {
 
   return (
     <View style={[styles.message, isSent ? styles.sent : styles.received]}>
-      <Text style={styles.from}>{from}</Text>
+      <Text style={styles.sender}>{from}</Text>
       <View
         style={[
           styles.bubble,

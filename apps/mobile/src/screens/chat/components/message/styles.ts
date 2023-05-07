@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
   received: {
     alignItems: "flex-start",
   },
-  from: {
+  sender: {
     color: COLORS.neutral[400],
   },
   bubble: {
