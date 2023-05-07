@@ -6,6 +6,6 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   separator: {
-    height: SPACING.xxs,
+    height: SPACING.base,
   },
 });
