@@ -1,3 +1,4 @@
+import { randomUUID } from "node:crypto";
 import {
   MessageBody,
   SubscribeMessage,
@@ -18,7 +19,7 @@ export class ChatGateway {
   handleMessage(@MessageBody() data: NewMessageDto) {
     this.server.emit("message.receive", {
       ...data,
-      id: String(new Date().getTime()),
+      id: randomUUID(),
     });
   }
 }
