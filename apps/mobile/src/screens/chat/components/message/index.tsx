@@ -14,6 +14,11 @@ interface Props {
 export function Message({ children, from, date }: Props) {
   const [storedUsername] = useMMKVString("username");
   const isSent = from === storedUsername;
+  const sentAt = new Date(date).toLocaleString(undefined, {
+    hour12: true,
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
   return (
     <View style={isSent ? styles.sent : styles.received}>
@@ -27,13 +32,7 @@ export function Message({ children, from, date }: Props) {
         <Text>{children}</Text>
       </View>
       <Text size="xs">
-        {new Date(date).toLocaleString(undefined, {
-          hour12: true,
-          dateStyle: "short",
-          timeStyle: "short",
-          hour: "2-digit",
-          minute: "2-digit",
-        })}
+        {sentAt}
       </Text>
     </View>
   );
