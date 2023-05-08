@@ -15,8 +15,10 @@ export function MessageList({ messages }: Props) {
       removeClippedSubviews
       data={messages}
       keyExtractor={(item) => item.id}
-      renderItem={({ item: { message, username } }) => (
-        <Message from={username}>{message}</Message>
+      renderItem={({ item: { message, username, createdAt } }) => (
+        <Message from={username} date={createdAt}>
+          {message}
+        </Message>
       )}
       style={styles.list}
       ItemSeparatorComponent={() => <View style={styles.separator} />}

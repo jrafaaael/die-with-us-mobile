@@ -20,6 +20,7 @@ export class ChatGateway {
     this.server.emit("message.receive", {
       ...data,
       id: randomUUID(),
+      createdAt: new Date().toISOString(),
     });
   }
 }
