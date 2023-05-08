@@ -21,6 +21,7 @@ export function MessageList({ messages }: Props) {
         </Message>
       )}
       ItemSeparatorComponent={() => <View style={styles.separator} />}
+      showsVerticalScrollIndicator={false}
       style={styles.list}
     />
   );
