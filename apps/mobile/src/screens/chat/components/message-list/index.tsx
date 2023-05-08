@@ -20,8 +20,8 @@ export function MessageList({ messages }: Props) {
           {message}
         </Message>
       )}
-      style={styles.list}
       ItemSeparatorComponent={() => <View style={styles.separator} />}
+      style={styles.list}
     />
   );
 }
