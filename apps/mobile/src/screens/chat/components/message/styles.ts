@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
   bubble: {
     maxWidth: "90%",
     marginBottom: 2,
-    paddingVertical: 8,
+    paddingVertical: SPACING.xxs,
     paddingHorizontal: SPACING.sm,
     borderRadius: 15,
   },
