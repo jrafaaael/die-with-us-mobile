@@ -30,13 +30,15 @@ export const styles = StyleSheet.create({
   bubble: {
     paddingVertical: SPACING.xxs,
     paddingHorizontal: SPACING.sm,
-    borderRadius: 15,
+    borderRadius: 16,
     flexShrink: 1,
   },
   bubbleSent: {
     backgroundColor: COLORS.neutral[800],
+    borderTopRightRadius: 4,
   },
   bubbleReceived: {
     backgroundColor: COLORS.blue[600],
+    borderTopLeftRadius: 4,
   },
 });
