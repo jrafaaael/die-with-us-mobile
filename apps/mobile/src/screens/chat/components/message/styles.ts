@@ -12,6 +12,10 @@ export const styles = StyleSheet.create({
     color: COLORS.neutral[400],
     marginBottom: 4,
   },
+  sentAt: {
+    color: COLORS.neutral[500],
+    flexShrink: 0,
+  },
   bubble: {
     maxWidth: "90%",
     marginBottom: 2,

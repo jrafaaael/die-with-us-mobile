@@ -31,7 +31,7 @@ export function Message({ children, from, date }: Props) {
       >
         <Text>{children}</Text>
       </View>
-      <Text size="xs">
+      <Text size="xs" style={styles.sentAt}>
         {sentAt}
       </Text>
     </View>
