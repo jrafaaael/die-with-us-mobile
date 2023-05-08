@@ -2,9 +2,6 @@ import { StyleSheet } from "react-native";
 import { COLORS, SPACING } from "../../../../utils/styles";
 
 export const styles = StyleSheet.create({
-  message: {
-    gap: 4,
-  },
   sent: {
     alignItems: "flex-end",
   },
@@ -13,9 +10,11 @@ export const styles = StyleSheet.create({
   },
   sender: {
     color: COLORS.neutral[400],
+    marginBottom: 4,
   },
   bubble: {
     maxWidth: "90%",
+    marginBottom: 2,
     paddingVertical: 8,
     paddingHorizontal: SPACING.sm,
     borderRadius: 15,

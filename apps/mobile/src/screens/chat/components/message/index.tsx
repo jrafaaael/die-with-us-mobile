@@ -16,7 +16,7 @@ export function Message({ children, from, date }: Props) {
   const isSent = from === storedUsername;
 
   return (
-    <View style={[styles.message, isSent ? styles.sent : styles.received]}>
+    <View style={isSent ? styles.sent : styles.received}>
       <Text style={styles.sender}>{from}</Text>
       <View
         style={[
