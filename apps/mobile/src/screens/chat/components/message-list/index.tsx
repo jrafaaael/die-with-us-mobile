@@ -1,3 +1,4 @@
+import { LegacyRef } from "react";
 import { View } from "react-native";
 import { FlashList } from "@shopify/flash-list";
 
@@ -8,9 +9,10 @@ import { styles } from "./styles";
 
 interface Props {
   messages: IMessage[];
+  listRef: LegacyRef<FlashList<Message>>;
 }
 
-export function MessageList({ messages }: Props) {
+export function MessageList({ messages, listRef }: Props) {
   return (
     <FlashList
       data={messages}
@@ -22,7 +24,7 @@ export function MessageList({ messages }: Props) {
       estimatedItemSize={100}
       ItemSeparatorComponent={() => <View style={styles.separator} />}
       showsVerticalScrollIndicator={false}
-      style={styles.list}
+      ref={listRef}
     />
   );
 }
