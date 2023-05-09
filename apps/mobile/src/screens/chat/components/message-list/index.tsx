@@ -9,7 +9,7 @@ import { styles } from "./styles";
 
 interface Props {
   messages: IMessage[];
-  listRef: LegacyRef<FlashList<Message>>;
+  listRef: LegacyRef<FlashList<IMessage>>;
 }
 
 export function MessageList({ messages, listRef }: Props) {
