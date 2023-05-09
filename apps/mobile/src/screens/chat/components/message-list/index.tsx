@@ -1,4 +1,5 @@
-import { FlatList, View } from "react-native";
+import { View } from "react-native";
+import { FlashList } from "@shopify/flash-list";
 
 import { Message } from "../message";
 import { Message as IMessage } from "../../types/message";
@@ -11,10 +12,8 @@ interface Props {
 
 export function MessageList({ messages }: Props) {
   return (
-    <FlatList
-      removeClippedSubviews
+    <FlashList
       data={messages}
-      keyExtractor={(item) => item.id}
       renderItem={({ item: { message, username, createdAt } }) => (
         <Message from={username} date={createdAt}>
           {message}
@@ -22,7 +21,7 @@ export function MessageList({ messages }: Props) {
       )}
       ItemSeparatorComponent={() => <View style={styles.separator} />}
       showsVerticalScrollIndicator={false}
-      style={styles.list}
+      // style={styles.list}
     />
   );
 }
