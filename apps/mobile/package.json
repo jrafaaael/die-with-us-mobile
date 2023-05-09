@@ -10,6 +10,7 @@
     "build:dev:android": "eas build --profile development --platform android"
   },
   "dependencies": {
+    "@shopify/flash-list": "1.4.0",
     "@tanstack/react-query": "^4.29.5",
     "axios": "^1.4.0",
     "expo": "^48.0.7",
