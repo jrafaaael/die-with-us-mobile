@@ -22,6 +22,7 @@ export function MessageList({ messages, listRef }: Props) {
         </Message>
       )}
       estimatedItemSize={100}
+      keyExtractor={(item) => item.id}
       ItemSeparatorComponent={() => <View style={styles.separator} />}
       showsVerticalScrollIndicator={false}
       ref={listRef}
