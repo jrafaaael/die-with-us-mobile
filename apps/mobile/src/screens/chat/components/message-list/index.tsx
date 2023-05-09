@@ -19,9 +19,10 @@ export function MessageList({ messages }: Props) {
           {message}
         </Message>
       )}
+      estimatedItemSize={100}
       ItemSeparatorComponent={() => <View style={styles.separator} />}
       showsVerticalScrollIndicator={false}
-      // style={styles.list}
+      style={styles.list}
     />
   );
 }
