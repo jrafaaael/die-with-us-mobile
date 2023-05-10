@@ -8,7 +8,7 @@ interface ContextProps {
   setStoredUsername: (value: string | ((current: string) => string)) => void;
 }
 
-const UserContext = createContext<ContextProps>(null);
+const UserContext = createContext<ContextProps | null>(null);
 
 interface Props {
   children: JSX.Element | JSX.Element[];
