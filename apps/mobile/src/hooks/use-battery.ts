@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Platform } from "react-native";
 import * as Battery from "expo-battery";
 
+import { setIntervalAsap } from "../utils/set-interval-asap";
+
 const isIos = Platform.OS === "ios";
 
 export function useBattery() {
@@ -22,7 +24,7 @@ export function useBattery() {
         },
       );
     } else {
-      batteryLevelInterval = setInterval(async () => {
+      batteryLevelInterval = setIntervalAsap(async () => {
         const batteryLevel = await Battery.getBatteryLevelAsync();
         const batteryLevelInt = Math.round(batteryLevel * 100);
 
