@@ -5020,6 +5020,11 @@ expo-asset@~8.9.1:
     path-browserify "^1.0.0"
     url-parse "^1.5.9"
 
+expo-battery@~7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/expo-battery/-/expo-battery-7.1.1.tgz#e271c890aede1fc39b680874b1a4bf1dc2a1565b"
+  integrity sha512-xPAEiELGf7xbX7LMuyRjGAOAU38qt5b2zZqzjsBmy6ffayXsdWLTVlTGsJkX7B1GvHsF8ATEsdejjkiz31OmEQ==
+
 expo-constants@~14.2.0, expo-constants@~14.2.1:
   version "14.2.1"
   resolved "https://registry.yarnpkg.com/expo-constants/-/expo-constants-14.2.1.tgz#b5b6b8079d2082c31ccf2cbc7cf97a0e83c229c3"
