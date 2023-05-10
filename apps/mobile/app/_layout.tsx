@@ -7,7 +7,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import { AuthProvider } from "../src/providers/auth-provider";
+import { UserProvider } from "../src/providers/user-provider";
 import { COLORS, SPACING } from "../src/utils/styles";
 
 const queryClient = new QueryClient();
@@ -32,12 +32,12 @@ export default function MainLayout() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthProvider>
+      <UserProvider>
         <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
           <StatusBar style="light" />
           <Slot />
         </SafeAreaView>
-      </AuthProvider>
+      </UserProvider>
     </QueryClientProvider>
   );
 }
