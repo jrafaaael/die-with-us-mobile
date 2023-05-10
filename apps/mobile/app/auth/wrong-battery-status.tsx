@@ -5,7 +5,8 @@ export default function WrongBatteryStatus() {
   return (
     <>
       <Text isTitle size="xl">
-        Your battery is bigger than {MINIMUM_BATTERY_LEVEL}%
+        Your battery is bigger than {MINIMUM_BATTERY_LEVEL}% or you're charging
+        your phone -.-
       </Text>
     </>
   );
