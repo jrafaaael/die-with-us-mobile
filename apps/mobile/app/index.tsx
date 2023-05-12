@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { Keyboard } from "react-native";
 import { FlashList } from "@shopify/flash-list";
 
 import { useUser } from "../src/providers/user-provider";
@@ -26,6 +27,21 @@ export default function Chat() {
 
     return () => {
       socket.off("message.receive", handleNewMessage);
+    };
+  }, []);
+
+  useLayoutEffect(() => {
+    const keyboardWillShowListener = Keyboard.addListener(
+      "keyboardDidShow",
+      () => {
+        if (isNearToBottom?.current) {
+          listRef.current?.scrollToEnd({ animated: false });
+        }
+      },
+    );
+
+    return () => {
+      keyboardWillShowListener.remove();
     };
   }, []);
 
