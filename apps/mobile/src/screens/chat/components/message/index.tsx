@@ -14,7 +14,7 @@ interface Props {
 export function Message({ children, from, date }: Props) {
   const { storedUsername } = useUser();
 
-  const isSent = from === storedUsername;
+  const wasSent = from === storedUsername;
   const sentAt = new Date(date).toLocaleString(undefined, {
     hour12: true,
     hour: "2-digit",
@@ -22,12 +22,12 @@ export function Message({ children, from, date }: Props) {
   });
 
   return (
-    <View style={isSent ? styles.sent : styles.received}>
+    <View style={wasSent ? styles.sent : styles.received}>
       <Text style={styles.sender}>{from}</Text>
       <View
         style={[
           styles.bubble,
-          isSent ? styles.bubbleSent : styles.bubbleReceived,
+          wasSent ? styles.bubbleSent : styles.bubbleReceived,
         ]}
       >
         <Text>{children}</Text>
