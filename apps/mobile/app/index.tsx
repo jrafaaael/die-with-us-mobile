@@ -18,8 +18,8 @@ export default function Chat() {
     function handleNewMessage(data: Message) {
       setMessages((oldMessages) => [...oldMessages, { ...data }]);
 
-      if (data.username === storedUsername || isNearToBottom.current) {
-        listRef?.current?.scrollToEnd({ animated: true });
+      if (data.username === storedUsername || isNearToBottom?.current) {
+        listRef.current?.scrollToEnd({ animated: true });
       }
     }
 
