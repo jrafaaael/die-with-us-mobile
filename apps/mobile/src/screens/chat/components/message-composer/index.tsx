@@ -15,6 +15,10 @@ export function MessageComposer({ onSubmit }: Props) {
   const inputRef = useRef<TextInput>(null);
 
   const handleSubmit = () => {
+    if (messageRef.current.length < 1) {
+      return;
+    }
+
     onSubmit(messageRef.current);
     inputRef.current.clear();
     messageRef.current = "";
