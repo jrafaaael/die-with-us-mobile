@@ -26,22 +26,15 @@ export function Message({ children, from, date }: Props) {
       <Text style={styles.sender}>{from}</Text>
       <View
         style={[
-          styles.wrapper,
-          isSent ? styles.wrapperSent : styles.wrapperReceived,
+          styles.bubble,
+          isSent ? styles.bubbleSent : styles.bubbleReceived,
         ]}
       >
-        <Text size="xs" style={styles.sentAt}>
-          {sentAt}
-        </Text>
-        <View
-          style={[
-            styles.bubble,
-            isSent ? styles.bubbleSent : styles.bubbleReceived,
-          ]}
-        >
-          <Text>{children}</Text>
-        </View>
+        <Text>{children}</Text>
       </View>
+      <Text size="xs" style={styles.sentAt}>
+        {sentAt}
+      </Text>
     </View>
   );
 }
