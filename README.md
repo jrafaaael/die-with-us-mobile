@@ -4,12 +4,13 @@
 `die-with-us` is a educational-only clone of [Die With Me](https://diewithme.online/) app built by [Dries Depoorter](https://driesdepoorter.be/) and [David Surprenant](https://davidsurprenant.com/). The idea behind this repo is try new stuff (like `expo-dev-client`, `eas`, native modules and other backend technologies).
 
 ## Folder structure
-This repo is a [yarn workspace](https://classic.yarnpkg.com/lang/en/docs/workspaces/) (as recommended in [Expo docs](https://docs.expo.dev/guides/monorepos)). All the source code lives in the `apps` folder.
-
 ```
-├── apps/
-│   ├── api/            # nodejs nestjs backend
-│   ├── mobile/         # react-native + expo mobile app
+├── app/                                      # All app's screens
+├── src/                                      # All source code
+│   ├── shared-folders/                       # Shared components, utils, libs, etc across the project
+│   └── screens/                              # All app's screens source code
+│       └── screen-1/                         # Specific screen folder
+│           └── screen-1-related-folders/     # Specific screen components, utils, libs, etc
 ```
 ## Requirements
 - `nodejs ^18`
@@ -24,22 +25,19 @@ eas login
 1. Clone this repo
 2. Run installation command
 ```
- yarn install
+ yarn install # or npm or pnpm
 ```
 3. Create a development build to run the app on emulator/simulator or physical device (Android only)
 ```
-yarn workspace die-with-us-mobile run build:dev:android         # for both android emulator and physical device
+yarn run build:dev:android         # for both android emulator and physical device
 ```
 or
 ```
-yarn workspace die-with-us-mobile run build:dev:ios:simulator   # for ios simulator only
+yarn run build:dev:ios:simulator   # for ios simulator only
 ```
-4. Run development commands in separate terminals
+4. Run development command
 ```
-yarn run mobile:dev
-```
-```
-yarn run api:dev
+yarn start
 ```
 
 ## TODO
