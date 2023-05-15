@@ -3,6 +3,9 @@
 
 `die-with-us` is a educational-only clone of [Die With Me](https://diewithme.online/) app built by [Dries Depoorter](https://driesdepoorter.be/) and [David Surprenant](https://davidsurprenant.com/). The idea behind this repo is try new stuff (like `expo-dev-client`, `eas`, native modules and other backend technologies).
 
+## Backend
+- [nodejs + nestjs](https://github.com/jrafaaael/die-with-us-nest)
+
 ## Folder structure
 ```
 ├── app/                                      # All app's screens
