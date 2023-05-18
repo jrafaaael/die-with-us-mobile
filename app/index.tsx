@@ -51,7 +51,7 @@ export default function Chat() {
         messages={messages}
         listRef={listRef}
         onNearToBottom={() => (isNearToBottom.current = true)}
-        onNotAtEnd={() => (isNearToBottom.current = false)}
+        onNotNearToBottom={() => (isNearToBottom.current = false)}
       />
       <MessageComposer
         onSubmit={(message: string) =>

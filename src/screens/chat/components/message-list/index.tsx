@@ -12,7 +12,7 @@ interface Props {
   listRef: LegacyRef<FlashList<IMessage>>;
   treshold?: number;
   onNearToBottom?: () => void;
-  onNotAtEnd?: () => void;
+  onNotNearToBottom?: () => void;
 }
 
 export function MessageList({
@@ -20,7 +20,7 @@ export function MessageList({
   treshold = 100,
   listRef,
   onNearToBottom,
-  onNotAtEnd,
+  onNotNearToBottom,
 }: Props) {
   const handleScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     const { contentSize, contentOffset, layoutMeasurement } = e.nativeEvent;
@@ -32,7 +32,7 @@ export function MessageList({
     if (isNearToBottom) {
       onNearToBottom?.();
     } else {
-      onNotAtEnd?.();
+      onNotNearToBottom?.();
     }
   };
 
