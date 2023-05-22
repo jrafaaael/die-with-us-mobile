@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { StyleSheet } from "react-native";
+import { z } from "zod";
 
 import { Text } from "../../src/components/text";
 import { Input } from "../../src/components/input";
@@ -14,15 +15,19 @@ import { COLORS, SPACING } from "../../src/utils/styles";
 
 const ALPHANUMERIC_AND_UNDERSCORE = /^[a-zA-z0-9_]+$/;
 
+const usernameScheme = z
+  .string()
+  .min(1)
+  .max(12)
+  .regex(ALPHANUMERIC_AND_UNDERSCORE);
+
 export default function Auth() {
   const [username, setUsername] = useState("");
   const debouncedUsername = useDebounce(username, 500);
   const { setStoredUser } = useUser();
 
   const usernameIsValid =
-    debouncedUsername.length > 0 &&
-    debouncedUsername.length <= 12 &&
-    ALPHANUMERIC_AND_UNDERSCORE.test(debouncedUsername) &&
+    usernameScheme.safeParse(debouncedUsername).success &&
     username === debouncedUsername;
 
   const { data } = useCheckUsernameAvailability({
