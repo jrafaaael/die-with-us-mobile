@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const API_URL = process.env.API_URL;
+
 export const rq = axios.create({
-  baseURL: "http://192.168.0.184:3000/",
+  baseURL: API_URL,
 });
