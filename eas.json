@@ -15,10 +15,16 @@
       "distribution": "internal",
       "ios": {
         "simulator": true
+      },
+      "env": {
+        "STAGE": "development"
       }
     },
     "preview": {
-      "distribution": "internal"
+      "distribution": "internal",
+      "env": {
+        "STAGE": "preview"
+      }
     },
     "production": {
       "env": {
