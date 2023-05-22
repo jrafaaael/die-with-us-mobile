@@ -44,6 +44,6 @@ yarn start
 ```
 
 ## TODO
-- [ ] better handling of Expo env vars
+- [x] better handling of Expo env vars
 - [ ] message reactions (maybe)
 - [ ] message replies (maybe)
