@@ -35,7 +35,8 @@
     "react-native-screens": "~3.20.0",
     "react-native-svg": "13.4.0",
     "react-native-web": "~0.18.7",
-    "socket.io-client": "^4.6.1"
+    "socket.io-client": "^4.6.1",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
