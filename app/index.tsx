@@ -12,13 +12,13 @@ export default function Chat() {
   const [messages, setMessages] = useState([]);
   const listRef = useRef<FlashList<Message> | null>(null);
   const isNearToBottom = useRef(null);
-  const { storedUsername } = useUser();
+  const { storedUser } = useUser();
 
   useEffect(() => {
     function handleNewMessage(data: Message) {
       setMessages((oldMessages) => [...oldMessages, { ...data }]);
 
-      if (data.username === storedUsername || isNearToBottom?.current) {
+      if (data.username === storedUser.username || isNearToBottom?.current) {
         listRef.current?.scrollToEnd({ animated: true });
       }
     }
@@ -55,7 +55,7 @@ export default function Chat() {
       />
       <MessageComposer
         onSubmit={(message: string) =>
-          socket.emit("message.send", { message, username: storedUsername })
+          socket.emit("message.send", { message, username: storedUser })
         }
       />
     </>

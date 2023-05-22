@@ -1,11 +1,13 @@
 import { useMutation } from "@tanstack/react-query";
+
+import { User } from "../types/user";
 import { rq } from "../../../libs/axios";
 
-interface RegisterUser {
+interface UsernameToRegister {
   username: string;
 }
 
-async function registerUser(username: string): Promise<RegisterUser> {
+async function registerUser(username: string): Promise<User> {
   const res = await rq.post("users", { username });
 
   return res.data;
@@ -13,6 +15,6 @@ async function registerUser(username: string): Promise<RegisterUser> {
 
 export function useRegisterUser() {
   return useMutation({
-    mutationFn: ({ username }: RegisterUser) => registerUser(username),
+    mutationFn: ({ username }: UsernameToRegister) => registerUser(username),
   });
 }

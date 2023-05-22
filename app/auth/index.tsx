@@ -17,7 +17,7 @@ const ALPHANUMERIC_AND_UNDERSCORE = /^[a-zA-z0-9_]+$/;
 export default function Auth() {
   const [username, setUsername] = useState("");
   const debouncedUsername = useDebounce(username, 500);
-  const { setStoredUsername } = useUser();
+  const { setStoredUser } = useUser();
 
   const usernameIsValid =
     debouncedUsername.length > 0 &&
@@ -37,8 +37,8 @@ export default function Auth() {
     mutate(
       { username: debouncedUsername },
       {
-        onSuccess: () => {
-          setStoredUsername(debouncedUsername);
+        onSuccess: (data) => {
+          setStoredUser(data);
         },
       },
     );

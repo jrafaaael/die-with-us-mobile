@@ -12,9 +12,9 @@ interface Props {
 }
 
 export function Message({ children, from, date }: Props) {
-  const { storedUsername } = useUser();
+  const { storedUser } = useUser();
 
-  const wasSent = from === storedUsername;
+  const wasSent = from === storedUser.username;
   const sentAt = new Date(date).toLocaleString(undefined, {
     hour12: true,
     hour: "2-digit",

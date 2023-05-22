@@ -1,11 +1,12 @@
 import { createContext, useContext } from "react";
-import { useMMKVString } from "react-native-mmkv";
+import { useMMKVObject } from "react-native-mmkv";
 
 import { useProtectedRoute } from "../hooks/use-protected-route";
+import { User } from "../screens/auth/types/user";
 
 interface ContextProps {
-  storedUsername: string;
-  setStoredUsername: (value: string | ((current: string) => string)) => void;
+  storedUser: User;
+  setStoredUser: (value: User) => void;
 }
 
 const UserContext = createContext<ContextProps | null>(null);
@@ -15,12 +16,12 @@ interface Props {
 }
 
 export function UserProvider({ children }: Props) {
-  const [storedUsername, setStoredUsername] = useMMKVString("username");
+  const [storedUser, setStoredUser] = useMMKVObject<User>("username");
 
-  useProtectedRoute(storedUsername);
+  useProtectedRoute(storedUser ?? null);
 
   return (
-    <UserContext.Provider value={{ storedUsername, setStoredUsername }}>
+    <UserContext.Provider value={{ storedUser, setStoredUser }}>
       {children}
     </UserContext.Provider>
   );
