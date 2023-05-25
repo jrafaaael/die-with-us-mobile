@@ -1,7 +1,7 @@
 # die-with-us
 **DISCLAIMER:** this app will not be monetized or even published to any app store. This repo is for educational-only purposes.
 
-`die-with-us` is a educational-only clone of [Die With Me](https://diewithme.online/) app built by [Dries Depoorter](https://driesdepoorter.be/) and [David Surprenant](https://davidsurprenant.com/). The idea behind this repo is try new stuff (like `expo-dev-client`, `eas`, native modules and other backend technologies).
+`die-with-us` is a educational-only clone of [Die With Me](https://diewithme.online/) app built by [Dries Depoorter](https://driesdepoorter.be/) and [David Surprenant](https://davidsurprenant.com/). The idea behind this repo is try new stuff (like `expo-dev-client`, `eas`, native modules and some cool backend technologies).
 
 ## Backend
 - [nodejs + nestjs](https://github.com/jrafaaael/die-with-us-nest)
