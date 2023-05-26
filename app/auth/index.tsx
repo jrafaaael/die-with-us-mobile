@@ -30,16 +30,17 @@ export default function Auth() {
     usernameSchema.safeParse(debouncedUsername).success &&
     username === debouncedUsername;
 
-  const { data } = useCheckUsernameAvailability({
+  const userRegister = useRegisterUser();
+  const usernameAvailability = useCheckUsernameAvailability({
     username: debouncedUsername,
     enabled: usernameIsValid,
   });
-  const { isLoading, mutate } = useRegisterUser();
 
-  const usernameIsAvailable = data?.available && usernameIsValid;
+  const usernameIsAvailable =
+    usernameAvailability.data?.available && usernameIsValid;
 
   const handleRegister = () => {
-    mutate(
+    userRegister.mutate(
       { username: debouncedUsername },
       {
         onSuccess: (data) => {
@@ -60,7 +61,7 @@ export default function Auth() {
         onChangeText={(text) => setUsername(text)}
       />
       <Button
-        disabled={!usernameIsAvailable || isLoading}
+        disabled={!usernameIsAvailable || userRegister.isLoading}
         style={styles.button}
         onPress={handleRegister}
       >
