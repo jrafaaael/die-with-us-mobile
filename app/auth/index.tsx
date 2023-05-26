@@ -17,7 +17,7 @@ const ALPHANUMERIC_AND_UNDERSCORE = /^[a-zA-z0-9_]+$/;
 
 const usernameSchema = z
   .string()
-  .min(1)
+  .min(3)
   .max(12)
   .regex(ALPHANUMERIC_AND_UNDERSCORE);
 
