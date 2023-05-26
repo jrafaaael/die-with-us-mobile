@@ -15,7 +15,7 @@ import { COLORS, SPACING } from "../../src/utils/styles";
 
 const ALPHANUMERIC_AND_UNDERSCORE = /^[a-zA-z0-9_]+$/;
 
-const usernameScheme = z
+const usernameSchema = z
   .string()
   .min(1)
   .max(12)
@@ -27,7 +27,7 @@ export default function Auth() {
   const { setStoredUser } = useUser();
 
   const usernameIsValid =
-    usernameScheme.safeParse(debouncedUsername).success &&
+    usernameSchema.safeParse(debouncedUsername).success &&
     username === debouncedUsername;
 
   const { data } = useCheckUsernameAvailability({
