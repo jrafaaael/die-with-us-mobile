@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { z } from "zod";
 
 import { Text } from "../../src/components/text";
@@ -31,6 +31,8 @@ export default function Auth() {
     enabled: usernameSchema.safeParse(debouncedUsername).success,
   });
 
+  const usernameResult = usernameSchema.safeParse(username);
+
   const handleRegister = () => {
     userRegister.mutate(
       { username: debouncedUsername },
@@ -52,6 +54,15 @@ export default function Auth() {
         leftElement={<User fill={COLORS.neutral[500]} />}
         onChangeText={(text) => setUsername(text)}
       />
+      <View style={styles.errorsContainer}>
+        {usernameResult.success === false
+          ? usernameResult.error.issues.map(({ message }, idx) => (
+            <Text key={idx} size="xs" style={styles.textValidationError}>
+              {message}
+            </Text>
+          ))
+          : null}
+      </View>
       <Button
         disabled={
           !usernameAvailability.data?.available ||
@@ -73,5 +84,12 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: "auto",
+  },
+  errorsContainer: {
+    marginTop: SPACING.sm,
+    gap: SPACING.sm / 2,
+  },
+  textValidationError: {
+    color: COLORS.red[500],
   },
 });
