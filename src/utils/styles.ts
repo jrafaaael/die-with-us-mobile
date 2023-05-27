@@ -14,6 +14,9 @@ export const COLORS = {
     500: "#3b82f6",
     600: "#2563eb",
   },
+  red: {
+    500: "#ef4444",
+  },
 };
 
 export const FONT_SIZE = {
