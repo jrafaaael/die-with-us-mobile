@@ -64,6 +64,13 @@ export default function Auth() {
             </Text>
           ))
           : null}
+        {usernameAvailability.data &&
+          !usernameAvailability?.data?.available &&
+          username === debouncedUsername ? (
+          <Text size="xs" style={styles.textValidationError}>
+            Username already exists
+          </Text>
+        ) : null}
       </View>
       <Button
         disabled={
