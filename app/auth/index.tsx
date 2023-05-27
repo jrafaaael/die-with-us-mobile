@@ -17,9 +17,11 @@ const ALPHANUMERIC_AND_UNDERSCORE = /^[a-zA-z0-9_]+$/;
 
 const usernameSchema = z
   .string()
-  .min(3)
-  .max(12)
-  .regex(ALPHANUMERIC_AND_UNDERSCORE);
+  .min(3, { message: "Username must be 3 or more characters long" })
+  .max(12, { message: "Username must be 12 or fewer characters long" })
+  .regex(ALPHANUMERIC_AND_UNDERSCORE, {
+    message: "Username must be alphanumeric and '_'",
+  });
 
 export default function Auth() {
   const [username, setUsername] = useState("");
