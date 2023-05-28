@@ -55,7 +55,10 @@ export default function Chat() {
       />
       <MessageComposer
         onSubmit={(message: string) =>
-          socket.emit("message.send", { message, username: storedUser })
+          socket.emit("message.send", {
+            message,
+            username: storedUser.username,
+          })
         }
       />
     </>
