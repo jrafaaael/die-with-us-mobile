@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useRouter } from "expo-router";
 import { BatteryState } from "expo-battery";
 
@@ -10,16 +10,20 @@ export function useProtectedRoute(user: User | null) {
   const router = useRouter();
   const { batteryLevel, batteryState } = useBattery();
 
-  useEffect(() => {
+  const route = useMemo(() => {
     if (!user) {
-      router.replace("/auth");
+      return "/auth";
     } else if (
       batteryLevel >= MINIMUM_BATTERY_LEVEL ||
       batteryState === BatteryState.CHARGING
     ) {
-      router.replace("/auth/wrong-battery-status");
+      return "/auth/wrong-battery-status";
     } else if (user) {
-      router.replace("/");
+      return "/";
     }
   }, [user, batteryLevel, batteryState]);
+
+  useEffect(() => {
+    router.replace(route);
+  }, [route]);
 }
