@@ -2,9 +2,11 @@ import { StyleSheet } from "react-native";
 import { COLORS, SPACING } from "../../../../utils/styles";
 
 export const styles = StyleSheet.create({
+  wrapper: {
+    gap: 4,
+  },
   sent: {
     alignItems: "flex-end",
-    gap: 4,
   },
   received: {
     alignItems: "flex-start",

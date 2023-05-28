@@ -22,7 +22,7 @@ export function Message({ children, from, date }: Props) {
   });
 
   return (
-    <View style={wasSent ? styles.sent : styles.received}>
+    <View style={[styles.wrapper, wasSent ? styles.sent : styles.received]}>
       <Text style={styles.sender}>{from}</Text>
       <View
         style={[
