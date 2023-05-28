@@ -31,7 +31,7 @@ export default function Chat() {
   }, []);
 
   useLayoutEffect(() => {
-    const keyboardWillShowListener = Keyboard.addListener(
+    const keyboardDidShowListener = Keyboard.addListener(
       "keyboardDidShow",
       () => {
         if (isNearToBottom?.current) {
@@ -41,7 +41,7 @@ export default function Chat() {
     );
 
     return () => {
-      keyboardWillShowListener.remove();
+      keyboardDidShowListener.remove();
     };
   }, []);
 
