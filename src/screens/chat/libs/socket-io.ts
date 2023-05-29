@@ -1,3 +1,5 @@
 import { io } from "socket.io-client";
 
-export const socket = io("http://192.168.1.15:3001");
+const SOCKET_URL = process.env.SOCKET_URL;
+
+export const socket = io(SOCKET_URL);
