@@ -1,7 +1,9 @@
 import { View } from "react-native";
 
+import { MessageBubble } from "../message-bubble";
 import { Text } from "../../../../components/text";
 import { useUser } from "../../../../providers/user-provider";
+import { Message as IMessage } from "../../types/message";
 
 import { styles } from "./styles";
 
@@ -9,12 +11,22 @@ interface Props {
   children: string;
   from: string;
   date: string;
+  previousMessage: IMessage | null;
+  nextMessage: IMessage | null;
 }
 
-export function Message({ children, from, date }: Props) {
+export function Message({
+  children,
+  from,
+  date,
+  previousMessage,
+  nextMessage,
+}: Props) {
   const { storedUser } = useUser();
 
   const wasSent = from === storedUser.username;
+  const previousMessageIsSameRemitent = previousMessage?.username === from;
+  const nextMessageIsSameRemitent = nextMessage?.username === from;
   const sentAt = new Date(date).toLocaleString(undefined, {
     hour12: true,
     hour: "2-digit",
@@ -23,18 +35,21 @@ export function Message({ children, from, date }: Props) {
 
   return (
     <View style={[styles.wrapper, wasSent ? styles.sent : styles.received]}>
-      <Text style={styles.sender}>{from}</Text>
-      <View
-        style={[
-          styles.bubble,
-          wasSent ? styles.bubbleSent : styles.bubbleReceived,
-        ]}
+      {!previousMessageIsSameRemitent ? (
+        <Text style={styles.sender}>{from}</Text>
+      ) : null}
+      <MessageBubble
+        isMine={wasSent}
+        previousMessageIsSameRemitent={previousMessageIsSameRemitent}
+        nextMessageIsSameRemitent={nextMessageIsSameRemitent}
       >
-        <Text>{children}</Text>
-      </View>
-      <Text size="xs" style={styles.sentAt}>
-        {sentAt}
-      </Text>
+        {children}
+      </MessageBubble>
+      {nextMessage === null || !nextMessageIsSameRemitent ? (
+        <Text size="xs" style={styles.sentAt}>
+          {sentAt}
+        </Text>
+      ) : null}
     </View>
   );
 }

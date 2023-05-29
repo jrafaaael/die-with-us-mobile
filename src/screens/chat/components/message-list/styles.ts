@@ -3,6 +3,6 @@ import { SPACING } from "../../../../utils/styles";
 
 export const styles = StyleSheet.create({
   separator: {
-    height: SPACING.base,
+    height: SPACING.xxs / 2,
   },
 });

@@ -39,8 +39,15 @@ export function MessageList({
   return (
     <FlashList
       data={messages}
-      renderItem={({ item: { message, username, createdAt } }) => (
-        <Message from={username} date={createdAt}>
+      renderItem={({ item: { message, username, createdAt }, index }) => (
+        <Message
+          from={username}
+          date={createdAt}
+          previousMessage={index === 0 ? null : messages.at(index - 1)}
+          nextMessage={
+            index === messages.length - 1 ? null : messages.at(index + 1)
+          }
+        >
           {message}
         </Message>
       )}
