@@ -24,20 +24,29 @@ export function MessageBubble({
   const isLastInMessageGroupFromSameRemitent =
     previousMessageIsSameRemitent && !nextMessageIsSameRemitent;
 
+  const sentStyles = [
+    styles.bubbleSent,
+    isFirstInMessageGroupFromSameRemitent ? styles.firstInSentMessageGroup : {},
+    isInMiddleInMessageGroupFromSameRemitent
+      ? styles.middleInSentMessageGroup
+      : {},
+    isLastInMessageGroupFromSameRemitent ? styles.lastInSentMessageGroup : {},
+  ];
+  const receivedStyles = [
+    styles.bubbleReceived,
+    isFirstInMessageGroupFromSameRemitent
+      ? styles.firstInReceivedMessageGroup
+      : {},
+    isInMiddleInMessageGroupFromSameRemitent
+      ? styles.middleInReceivedMessageGroup
+      : {},
+    isLastInMessageGroupFromSameRemitent
+      ? styles.lastInReceivedMessageGroup
+      : {},
+  ];
+
   return (
-    <View
-      style={[
-        styles.bubble,
-        isMine ? styles.bubbleSent : styles.bubbleReceived,
-        isFirstInMessageGroupFromSameRemitent
-          ? styles.isFirstInMessageGroup
-          : {},
-        isInMiddleInMessageGroupFromSameRemitent
-          ? styles.isInMiddleInMessageGroup
-          : {},
-        isLastInMessageGroupFromSameRemitent ? styles.isLastInMessageGroup : {},
-      ]}
-    >
+    <View style={[styles.bubble, isMine ? sentStyles : receivedStyles]}>
       <Text style={children.length < 5 ? styles.shortMessage : {}}>
         {children}
       </Text>

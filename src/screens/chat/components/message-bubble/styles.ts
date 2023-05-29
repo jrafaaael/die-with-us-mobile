@@ -14,15 +14,25 @@ export const styles = StyleSheet.create({
   bubbleReceived: {
     backgroundColor: COLORS.blue[600],
   },
-  isFirstInMessageGroup: {
+  firstInSentMessageGroup: {
     borderBottomRightRadius: 4,
   },
-  isInMiddleInMessageGroup: {
+  middleInSentMessageGroup: {
     borderTopRightRadius: 4,
     borderBottomRightRadius: 4,
   },
-  isLastInMessageGroup: {
+  lastInSentMessageGroup: {
     borderTopRightRadius: 4,
+  },
+  firstInReceivedMessageGroup: {
+    borderBottomLeftRadius: 4,
+  },
+  middleInReceivedMessageGroup: {
+    borderTopLeftRadius: 4,
+    borderBottomLeftRadius: 4,
+  },
+  lastInReceivedMessageGroup: {
+    borderTopLeftRadius: 4,
   },
   shortMessage: {
     textAlign: "center",
