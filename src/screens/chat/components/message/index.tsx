@@ -24,7 +24,7 @@ export function Message({
 }: Props) {
   const { storedUser } = useUser();
 
-  const wasSent = from === storedUser.username;
+  const isMine = from === storedUser.username;
   const previousMessageIsSameRemitent = previousMessage?.username === from;
   const nextMessageIsSameRemitent = nextMessage?.username === from;
   const sentAt = new Date(date).toLocaleString(undefined, {
@@ -34,12 +34,12 @@ export function Message({
   });
 
   return (
-    <View style={[styles.wrapper, wasSent ? styles.sent : styles.received]}>
+    <View style={[styles.wrapper, isMine ? styles.sent : styles.received]}>
       {!previousMessageIsSameRemitent ? (
         <Text style={styles.sender}>{from}</Text>
       ) : null}
       <MessageBubble
-        isMine={wasSent}
+        isMine={isMine}
         previousMessageIsSameRemitent={previousMessageIsSameRemitent}
         nextMessageIsSameRemitent={nextMessageIsSameRemitent}
       >
