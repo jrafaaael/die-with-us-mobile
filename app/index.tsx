@@ -9,14 +9,18 @@ import { socket } from "../src/screens/chat/libs/socket-io";
 import { Message } from "../src/screens/chat/types/message";
 
 export default function Chat() {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState({});
   const listRef = useRef<FlashList<Message> | null>(null);
   const isNearToBottom = useRef(null);
   const { storedUser } = useUser();
 
   useEffect(() => {
     function handleNewMessage(data: Message) {
-      setMessages((oldMessages) => [...oldMessages, { ...data }]);
+      const messageById = {
+        [data.id]: data,
+      };
+
+      setMessages((oldMessages) => ({ ...oldMessages, ...messageById }));
 
       if (data.username === storedUser.username || isNearToBottom?.current) {
         listRef.current?.scrollToEnd({ animated: true });
@@ -48,7 +52,7 @@ export default function Chat() {
   return (
     <>
       <MessageList
-        messages={messages}
+        messages={Object.values(messages)}
         listRef={listRef}
         onNearToBottom={() => (isNearToBottom.current = true)}
         onNotNearToBottom={() => (isNearToBottom.current = false)}
