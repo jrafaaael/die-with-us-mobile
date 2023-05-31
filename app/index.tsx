@@ -8,6 +8,19 @@ import { MessageComposer } from "../src/screens/chat/components/message-composer
 import { socket } from "../src/screens/chat/libs/socket-io";
 import { Message } from "../src/screens/chat/types/message";
 
+function makeid(length = 24) {
+  let result = "";
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const charactersLength = characters.length;
+  let counter = 0;
+  while (counter < length) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    counter += 1;
+  }
+  return result;
+}
+
 export default function Chat() {
   const [messages, setMessages] = useState({});
   const listRef = useRef<FlashList<Message> | null>(null);
@@ -49,6 +62,26 @@ export default function Chat() {
     };
   }, []);
 
+  const handleSubmit = (message: string) => {
+    const optimisticId = makeid();
+    const optimisticMessage: Message = {
+      message,
+      username: storedUser.username,
+      optimisticId,
+    };
+
+    socket.emit("message.send", optimisticMessage);
+
+    const optimisticMessageById: { [id: string]: Message } = {
+      [optimisticId]: optimisticMessage,
+    };
+
+    setMessages((oldMessages) => ({
+      ...oldMessages,
+      ...optimisticMessageById,
+    }));
+  };
+
   return (
     <>
       <MessageList
@@ -57,14 +90,7 @@ export default function Chat() {
         onNearToBottom={() => (isNearToBottom.current = true)}
         onNotNearToBottom={() => (isNearToBottom.current = false)}
       />
-      <MessageComposer
-        onSubmit={(message: string) =>
-          socket.emit("message.send", {
-            message,
-            username: storedUser.username,
-          })
-        }
-      />
+      <MessageComposer onSubmit={handleSubmit} />
     </>
   );
 }

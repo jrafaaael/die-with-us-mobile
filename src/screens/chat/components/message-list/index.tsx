@@ -52,7 +52,7 @@ export function MessageList({
         </Message>
       )}
       estimatedItemSize={100}
-      keyExtractor={(item) => item.id}
+      keyExtractor={(item) => item.id ?? item.optimisticId}
       ItemSeparatorComponent={() => <View style={styles.separator} />}
       showsVerticalScrollIndicator={false}
       ref={listRef}
