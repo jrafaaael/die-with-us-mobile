@@ -29,9 +29,16 @@ export default function Chat() {
 
   useEffect(() => {
     function handleNewMessage(data: Message) {
-      const messageById = {
-        [data.id]: data,
-      };
+      const { optimisticId } = data;
+      const message = messages[optimisticId];
+      const { id, ...rest } = message;
+
+      const messageById =
+        message.username === storedUser.username
+          ? {
+              [optimisticId]: { ...rest, ...data },
+            }
+          : { [id]: data };
 
       setMessages((oldMessages) => ({ ...oldMessages, ...messageById }));
 
@@ -45,7 +52,7 @@ export default function Chat() {
     return () => {
       socket.off("message.receive", handleNewMessage);
     };
-  }, []);
+  }, [messages]);
 
   useLayoutEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
