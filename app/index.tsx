@@ -42,7 +42,7 @@ export default function Chat() {
 
       setMessages((oldMessages) => ({ ...oldMessages, ...messageById }));
 
-      if (data.username === storedUser.username || isNearToBottom?.current) {
+      if (isNearToBottom?.current) {
         listRef.current?.scrollToEnd({ animated: true });
       }
     }
