@@ -87,6 +87,8 @@ export default function Chat() {
       ...oldMessages,
       ...optimisticMessageById,
     }));
+
+    listRef.current?.scrollToEnd({ animated: true });
   };
 
   return (
