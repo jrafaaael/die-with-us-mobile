@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Keyboard } from "react-native";
+import * as Crypto from "expo-crypto";
 import { FlashList } from "@shopify/flash-list";
 
 import { useUser } from "../src/providers/user-provider";
@@ -7,19 +8,6 @@ import { MessageList } from "../src/screens/chat/components/message-list";
 import { MessageComposer } from "../src/screens/chat/components/message-composer";
 import { socket } from "../src/screens/chat/libs/socket-io";
 import { Message } from "../src/screens/chat/types/message";
-
-function makeid(length = 24) {
-  let result = "";
-  const characters =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  const charactersLength = characters.length;
-  let counter = 0;
-  while (counter < length) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    counter += 1;
-  }
-  return result;
-}
 
 export default function Chat() {
   const [messages, setMessages] = useState({});
@@ -70,7 +58,7 @@ export default function Chat() {
   }, []);
 
   const handleSubmit = (message: string) => {
-    const optimisticId = makeid();
+    const optimisticId = Crypto.randomUUID();
     const optimisticMessage: Message = {
       message,
       username: storedUser.username,
