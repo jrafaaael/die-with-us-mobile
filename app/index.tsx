@@ -30,7 +30,7 @@ export default function Chat() {
 
       setMessages((oldMessages) => ({ ...oldMessages, ...messageById }));
 
-      if (isNearToBottom?.current) {
+      if (Object.keys(messages).length > 0 && isNearToBottom?.current) {
         listRef.current?.scrollToEnd({ animated: true });
       }
     }
@@ -76,7 +76,9 @@ export default function Chat() {
       ...optimisticMessageById,
     }));
 
-    listRef.current?.scrollToEnd({ animated: true });
+    if (Object.keys(messages).length > 0) {
+      listRef.current?.scrollToEnd({ animated: true });
+    }
   };
 
   return (
