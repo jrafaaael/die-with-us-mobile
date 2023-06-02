@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Keyboard } from "react-native";
+import * as Crypto from "expo-crypto";
 import { FlashList } from "@shopify/flash-list";
 
 import { useUser } from "../src/providers/user-provider";
@@ -9,16 +10,27 @@ import { socket } from "../src/screens/chat/libs/socket-io";
 import { Message } from "../src/screens/chat/types/message";
 
 export default function Chat() {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState({});
   const listRef = useRef<FlashList<Message> | null>(null);
   const isNearToBottom = useRef(null);
   const { storedUser } = useUser();
 
   useEffect(() => {
     function handleNewMessage(data: Message) {
-      setMessages((oldMessages) => [...oldMessages, { ...data }]);
+      const { optimisticId } = data;
+      const message = messages[optimisticId];
+      const { id, ...rest } = message;
 
-      if (data.username === storedUser.username || isNearToBottom?.current) {
+      const messageById =
+        message.username === storedUser.username
+          ? {
+              [optimisticId]: { ...rest, ...data },
+            }
+          : { [id]: data };
+
+      setMessages((oldMessages) => ({ ...oldMessages, ...messageById }));
+
+      if (Object.keys(messages).length > 0 && isNearToBottom?.current) {
         listRef.current?.scrollToEnd({ animated: true });
       }
     }
@@ -28,7 +40,7 @@ export default function Chat() {
     return () => {
       socket.off("message.receive", handleNewMessage);
     };
-  }, []);
+  }, [messages]);
 
   useLayoutEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
@@ -45,22 +57,39 @@ export default function Chat() {
     };
   }, []);
 
+  const handleSubmit = (message: string) => {
+    const optimisticId = Crypto.randomUUID();
+    const optimisticMessage: Message = {
+      message,
+      username: storedUser.username,
+      optimisticId,
+    };
+
+    socket.emit("message.send", optimisticMessage);
+
+    const optimisticMessageById: { [id: string]: Message } = {
+      [optimisticId]: optimisticMessage,
+    };
+
+    setMessages((oldMessages) => ({
+      ...oldMessages,
+      ...optimisticMessageById,
+    }));
+
+    if (Object.keys(messages).length > 0) {
+      listRef.current?.scrollToEnd({ animated: false });
+    }
+  };
+
   return (
     <>
       <MessageList
-        messages={messages}
+        messages={Object.values(messages)}
         listRef={listRef}
         onNearToBottom={() => (isNearToBottom.current = true)}
         onNotNearToBottom={() => (isNearToBottom.current = false)}
       />
-      <MessageComposer
-        onSubmit={(message: string) =>
-          socket.emit("message.send", {
-            message,
-            username: storedUser.username,
-          })
-        }
-      />
+      <MessageComposer onSubmit={handleSubmit} />
     </>
   );
 }

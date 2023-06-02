@@ -39,10 +39,11 @@ export function MessageList({
   return (
     <FlashList
       data={messages}
-      renderItem={({ item: { message, username, createdAt }, index }) => (
+      renderItem={({ item: { message, username, createdAt, id }, index }) => (
         <Message
           from={username}
           date={createdAt}
+          wasBroadcasted={Boolean(id)}
           previousMessage={index === 0 ? null : messages.at(index - 1)}
           nextMessage={
             index === messages.length - 1 ? null : messages.at(index + 1)
@@ -52,7 +53,7 @@ export function MessageList({
         </Message>
       )}
       estimatedItemSize={100}
-      keyExtractor={(item) => item.id}
+      keyExtractor={(item) => item.id ?? item.optimisticId}
       ItemSeparatorComponent={() => <View style={styles.separator} />}
       showsVerticalScrollIndicator={false}
       ref={listRef}
