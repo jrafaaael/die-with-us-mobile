@@ -2,8 +2,10 @@ import { View } from "react-native";
 
 import { MessageBubble } from "../message-bubble";
 import { Text } from "../../../../components/text";
+import { Clock } from "../../../../components/icons/outlined/clock";
 import { useUser } from "../../../../providers/user-provider";
 import { Message as IMessage } from "../../types/message";
+import { COLORS, SPACING } from "../../../../utils/styles";
 
 import { styles } from "./styles";
 
@@ -13,6 +15,7 @@ interface Props {
   date: string;
   previousMessage: IMessage | null;
   nextMessage: IMessage | null;
+  wasBroadcasted: boolean;
 }
 
 export function Message({
@@ -21,6 +24,7 @@ export function Message({
   date,
   previousMessage,
   nextMessage,
+  wasBroadcasted,
 }: Props) {
   const { storedUser } = useUser();
 
@@ -45,10 +49,18 @@ export function Message({
       >
         {children}
       </MessageBubble>
-      {nextMessage === null || !nextMessageIsSameRemitent ? (
-        <Text size="xs" style={styles.sentAt}>
-          {sentAt}
-        </Text>
+      {!wasBroadcasted ? (
+        <Clock
+          width={SPACING.sm}
+          height={SPACING.sm}
+          stroke={COLORS.neutral[400]}
+        />
+      ) : nextMessage === null || !nextMessageIsSameRemitent ? (
+        <View style={{ height: SPACING.sm }}>
+          <Text size="xs" style={styles.sentAt}>
+            {sentAt}
+          </Text>
+        </View>
       ) : null}
     </View>
   );
