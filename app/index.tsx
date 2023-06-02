@@ -77,7 +77,7 @@ export default function Chat() {
     }));
 
     if (Object.keys(messages).length > 0) {
-      listRef.current?.scrollToEnd({ animated: true });
+      listRef.current?.scrollToEnd({ animated: false });
     }
   };
 
