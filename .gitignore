@@ -16,4 +16,5 @@ web-build/
 # env vars
 .env
 .env.development
+.env.preview
 .env.production
