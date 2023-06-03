@@ -19,14 +19,12 @@ export default function Chat() {
     function handleNewMessage(data: Message) {
       const { optimisticId } = data;
       const message = messages[optimisticId];
-      const { id, ...rest } = message;
 
-      const messageById =
-        message.username === storedUser.username
-          ? {
-              [optimisticId]: { ...rest, ...data },
-            }
-          : { [id]: data };
+      const messageById = message
+        ? {
+            [optimisticId]: { ...message, ...data },
+          }
+        : { [data.id]: data };
 
       setMessages((oldMessages) => ({ ...oldMessages, ...messageById }));
 
