@@ -30,7 +30,12 @@ eas login
 ```
  yarn install # or npm or pnpm
 ```
-3. Create a development build to run the app on emulator/simulator or physical device (Android only)
+3. Copy `.env.example` and rename it with stage sufix
+```
+cp .env.example .env.development # or .env.preview or .env.production
+```
+4. Add correct values in `.env.*` file
+5. Create a development build to run the app on emulator/simulator or physical device (Android only)
 ```
 yarn run build:dev:android         # for both android emulator and physical device
 ```
@@ -38,7 +43,7 @@ or
 ```
 yarn run build:dev:ios:simulator   # for ios simulator only
 ```
-4. Run development command
+6. Run development command
 ```
 yarn start
 ```
