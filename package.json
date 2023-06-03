@@ -8,7 +8,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "build:dev:android": "eas build --profile development --platform android",
-    "build:dev:ios:simulator": "eas build --profile development-simulator --platform ios"
+    "build:dev:ios:simulator": "eas build --profile development-simulator --platform ios",
+    "build:preview:android": "eas build --profile preview --platform android"
   },
   "dependencies": {
     "@shopify/flash-list": "1.4.0",
