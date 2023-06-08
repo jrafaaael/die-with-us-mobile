@@ -3,6 +3,13 @@
 
 `die-with-us` is a educational-only clone of [Die With Me](https://diewithme.online/) app built by [Dries Depoorter](https://driesdepoorter.be/) and [David Surprenant](https://davidsurprenant.com/). The idea behind this repo is try new stuff (like `expo-dev-client`, `eas`, native modules and some cool backend technologies).
 
+<div>
+ <img style="height: auto; width: 24%;" src="https://github.com/jrafaaael/die-with-us-mobile/assets/70046023/99ddb5ae-3725-4cb1-8aae-e3c6d2e22a3e" />
+ <img style="height: auto; width: 24%;" src="https://github.com/jrafaaael/die-with-us-mobile/assets/70046023/a0293793-82e8-4ce2-b42e-8b9f32af645d" />
+ <img style="height: auto; width: 24%;" src="https://github.com/jrafaaael/die-with-us-mobile/assets/70046023/28c9d577-59fb-4f79-a3b9-cc38458edab0" />
+ <img style="height: auto; width: 24%;" src="https://github.com/jrafaaael/die-with-us-mobile/assets/70046023/a254bd12-43c6-41c1-b8ca-cae5e2c68e17" />
+</div>
+
 ## Backend
 - [nodejs + nestjs](https://github.com/jrafaaael/die-with-us-nest)
 
